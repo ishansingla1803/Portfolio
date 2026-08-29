@@ -178,6 +178,10 @@
   .stack-pill{font-size:0.72rem; padding:4px 10px; border-radius:99px; background:rgba(124,58,237,0.12); color:#C4B5FD; border:1px solid rgba(124,58,237,0.3);}
   .project-link{font-size:0.85rem; font-weight:600; color:var(--cyan); margin-top:4px;}
   .project-link:hover{text-decoration:underline;}
+  .project-card img{
+    width:calc(100% + 52px); margin:-26px -26px 4px -26px; aspect-ratio:16/10; object-fit:cover;
+    border-bottom:1px solid var(--border);
+  }
 
   /* CERTIFICATIONS placeholder */
   .certs-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
@@ -186,6 +190,15 @@
     color:var(--muted); font-size:0.88rem; min-height:140px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
   }
   .cert-slot .plus{font-size:1.4rem; color:var(--cyan);}
+  .cert-card{
+    background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden;
+    transition:transform .2s, border-color .2s; display:flex; flex-direction:column;
+  }
+  .cert-card:hover{transform:translateY(-4px); border-color:var(--cyan);}
+  .cert-card img{width:100%; aspect-ratio:4/3; object-fit:cover; display:block; border-bottom:1px solid var(--border);}
+  .cert-card-body{padding:18px 20px;}
+  .cert-card-body h3{font-size:1rem; margin-bottom:6px;}
+  .cert-card-body p{font-size:0.83rem; color:var(--muted);}
 
   /* CONTACT */
   .contact-box{
@@ -251,6 +264,7 @@
     <p>Aspiring cloud computing engineer with a growing focus on AI — currently a 2nd-year B.Tech CSE student at LPU, getting hands-on through research and real projects.</p>
     <div class="btn-row">
       <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="resume.pdf" class="btn btn-ghost" target="_blank">View my CV</a>
       <a href="#contact" class="btn btn-ghost">Get in Touch</a>
     </div>
   </div>
@@ -376,6 +390,7 @@
         <a href="#" class="project-link">View details →</a>
       </div>
       <div class="project-card">
+        <img src="images/cdp-tutoring.jpg" alt="Teaching Python at a government school in Ratia, Haryana">
         <span class="project-tag">Community · Outreach</span>
         <h3>Community Development Project</h3>
         <p>Taught Python fundamentals — from basics through functions — over a 7-day tutoring program at a government school, as part of LPU's GEN-231 course.</p>
@@ -393,9 +408,27 @@
       <p>Reserved slots — add your certificates, badges, or hackathon wins here as you earn them.</p>
     </div>
     <div class="certs-grid reveal">
-      <div class="cert-slot"><span class="plus">+</span>Add a certification</div>
-      <div class="cert-slot"><span class="plus">+</span>Add an achievement</div>
-      <div class="cert-slot"><span class="plus">+</span>Add a badge</div>
+      <div class="cert-card">
+        <img src="images/cert-aws-cloudclubs.jpg" alt="AWS Cloud Clubs certificate of participation">
+        <div class="cert-card-body">
+          <h3>AWS Student Community Day</h3>
+          <p>Certificate of Participation — AWS Cloud Clubs, Jalandhar · Nov 14, 2025</p>
+        </div>
+      </div>
+      <div class="cert-card">
+        <img src="images/cert-promptbuilder.jpg" alt="Prompt Builder 2026 certificate">
+        <div class="cert-card-body">
+          <h3>Prompt Builder 2026</h3>
+          <p>Technical participation certificate — ASTITWA, LPU School of AI &amp; Emerging Tech · Feb 20, 2026</p>
+        </div>
+      </div>
+      <div class="cert-card">
+        <img src="images/cert-infosys-datascience.jpg" alt="Infosys Springboard Data Science certificate">
+        <div class="cert-card-body">
+          <h3>Data Science — Infosys Springboard</h3>
+          <p>Course completion certificate · Mar 20, 2026</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
