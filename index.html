@@ -65,9 +65,17 @@
   .hero{
     position:relative; z-index:1;
     padding:110px 24px 90px;
-    display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:center;
+    display:grid; grid-template-columns:1.1fr 0.9fr; grid-template-rows:auto auto; gap:32px 48px; align-items:center;
     max-width:1100px; margin:0 auto;
   }
+  .hero-text{grid-column:1; grid-row:1;}
+  .hero-photo{grid-column:2; grid-row:1; display:flex; justify-content:center;}
+  .hero-photo img{
+    width:100%; max-width:340px; aspect-ratio:1/1; object-fit:cover;
+    border-radius:28px; box-shadow:0 20px 60px rgba(124,58,237,0.35);
+    border:3px solid var(--border);
+  }
+  .terminal{grid-column:1 / -1; grid-row:2;}
   .eyebrow{
     display:inline-block; font-family:'JetBrains Mono',monospace; font-size:0.82rem;
     color:var(--cyan); border:1px solid var(--border); padding:5px 12px; border-radius:99px;
@@ -238,6 +246,10 @@
 
   @media (max-width: 860px){
     .hero{grid-template-columns:1fr; padding-top:90px;}
+    .hero-text{grid-column:1; grid-row:2;}
+    .hero-photo{grid-column:1; grid-row:1;}
+    .hero-photo img{max-width:220px;}
+    .terminal{grid-column:1; grid-row:3;}
     .skills-grid{grid-template-columns:repeat(2,1fr);}
     .projects-grid{grid-template-columns:1fr;}
     .certs-grid{grid-template-columns:1fr;}
@@ -258,7 +270,7 @@
 
 <header>
   <nav>
-    <div class="logo">Ishan<span>.</span></div>
+    <div class="logo">Ishan Singla<span>.</span></div>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
@@ -274,15 +286,18 @@
 </header>
 
 <section class="hero" id="about">
-  <div>
+  <div class="hero-text">
     <span class="eyebrow">$ whoami</span>
-    <h1>Hi, I'm <span class="grad">Ishan</span></h1>
+    <h1>Hi, I'm <span class="grad">Ishan Singla</span></h1>
     <p>Aspiring cloud computing engineer with a growing focus on AI — currently a 2nd-year B.Tech CSE student at LPU, getting hands-on through research and real projects.</p>
     <div class="btn-row">
       <a href="#projects" class="btn btn-primary">View Projects</a>
       <a href="resume.pdf" class="btn btn-ghost" target="_blank">View my CV</a>
       <a href="#contact" class="btn btn-ghost">Get in Touch</a>
     </div>
+  </div>
+  <div class="hero-photo">
+    <img src="images/profile-photo-square.jpg" alt="Ishan Singla">
   </div>
   <div class="terminal">
     <div class="terminal-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div>
@@ -475,7 +490,7 @@
   </div>
 </section>
 
-<footer>© 2026 Ishan. Built and deployed with intent.</footer>
+<footer>© 2026 Ishan Singla. Built and deployed with intent.</footer>
 
 <div class="lightbox" id="lightbox">
   <div class="lightbox-close" id="lightboxClose">✕</div>
