@@ -184,7 +184,7 @@
   }
 
   /* CERTIFICATIONS placeholder */
-  .certs-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+  .certs-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:18px;}
   .cert-slot{
     border:1.5px dashed var(--border); border-radius:14px; padding:30px 20px; text-align:center;
     color:var(--muted); font-size:0.88rem; min-height:140px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
@@ -199,6 +199,22 @@
   .cert-card-body{padding:18px 20px;}
   .cert-card-body h3{font-size:1rem; margin-bottom:6px;}
   .cert-card-body p{font-size:0.83rem; color:var(--muted);}
+  .cert-card img, .project-card img{cursor:zoom-in; transition:filter .2s;}
+  .cert-card img:hover, .project-card img:hover{filter:brightness(1.08);}
+
+  /* LIGHTBOX */
+  .lightbox{
+    position:fixed; inset:0; z-index:999; background:rgba(6,9,20,0.92);
+    display:none; align-items:center; justify-content:center; padding:32px;
+    backdrop-filter:blur(4px);
+  }
+  .lightbox.open{display:flex;}
+  .lightbox img{max-width:min(900px,92vw); max-height:88vh; border-radius:10px; box-shadow:0 20px 60px rgba(0,0,0,0.6);}
+  .lightbox-close{
+    position:absolute; top:24px; right:32px; width:42px; height:42px; border-radius:50%;
+    background:var(--card); border:1px solid var(--border); color:var(--text);
+    font-size:1.3rem; display:flex; align-items:center; justify-content:center; cursor:pointer;
+  }
 
   /* CONTACT */
   .contact-box{
@@ -374,6 +390,7 @@
     </div>
     <div class="projects-grid reveal">
       <div class="project-card">
+        <img src="images/project-calculator.jpg" alt="Calculator app interface">
         <span class="project-tag">Web Tool</span>
         <h3>Calculator</h3>
         <p>A calculator app built with HTML and deployed on GitHub — my first shipped web project.</p>
@@ -382,6 +399,7 @@
         <!-- link removed -->
       </div>
       <div class="project-card">
+        <img src="images/project-ece.jpg" alt="Electrical engineering sensor project circuit">
         <span class="project-tag">Hardware · IoT</span>
         <h3>Temperature &amp; Humidity Sensor</h3>
         <p>1st-year Electrical Engineering project — a sensor circuit built to measure and read live temperature and humidity data.</p>
@@ -405,7 +423,7 @@
     <div class="section-head reveal">
       <span class="eyebrow">Credentials</span>
       <h2>Certifications &amp; achievements</h2>
-      <p>Reserved slots — add your certificates, badges, or hackathon wins here as you earn them.</p>
+      <p>Click any certificate to view it full-size.</p>
     </div>
     <div class="certs-grid reveal">
       <div class="cert-card">
@@ -427,6 +445,13 @@
         <div class="cert-card-body">
           <h3>Data Science — Infosys Springboard</h3>
           <p>Course completion certificate · Mar 20, 2026</p>
+        </div>
+      </div>
+      <div class="cert-card">
+        <img src="images/cert-python-saylor.jpg" alt="Saylor Academy Introduction to Python certificate">
+        <div class="cert-card-body">
+          <h3>Introduction to Python — Saylor Academy</h3>
+          <p>Certificate of achievement · Jan 24, 2026</p>
         </div>
       </div>
     </div>
@@ -452,6 +477,11 @@
 
 <footer>© 2026 Ishan. Built and deployed with intent.</footer>
 
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-close" id="lightboxClose">✕</div>
+  <img id="lightboxImg" src="" alt="Enlarged view">
+</div>
+
 <script>
   // mobile nav toggle
   const navToggle = document.getElementById('navToggle');
@@ -466,6 +496,20 @@
     });
   }, { threshold: 0.15 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  document.querySelectorAll('.cert-card img, .project-card img').forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightbox.classList.add('open');
+    });
+  });
+  const closeLightbox = () => lightbox.classList.remove('open');
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
 </script>
 
 </body>
